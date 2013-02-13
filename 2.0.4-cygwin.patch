@@ -1,0 +1,16 @@
+--- origsrc/yajl/src/CMakeLists.txt	2013-02-12 19:58:35.000000000 -0600
++++ src/yajl/src/CMakeLists.txt	2013-02-12 20:01:10.729525100 -0600
+@@ -78,9 +78,11 @@ INCLUDE_DIRECTORIES(${incDir}/..)
+ IF(NOT WIN32)
+   # at build time you may specify the cmake variable LIB_SUFFIX to handle
+   # 64-bit systems which use 'lib64'
+-  INSTALL(TARGETS yajl LIBRARY DESTINATION lib${LIB_SUFFIX})
++  INSTALL(TARGETS yajl LIBRARY DESTINATION lib${LIB_SUFFIX}
++                       RUNTIME DESTINATION bin
++                       ARCHIVE DESTINATION lib${LIB_SUFFIX})
+   INSTALL(TARGETS yajl_s ARCHIVE DESTINATION lib${LIB_SUFFIX})
+   INSTALL(FILES ${PUB_HDRS} DESTINATION include/yajl)
+   INSTALL(FILES ${incDir}/yajl_version.h DESTINATION include/yajl)
+-  INSTALL(FILES ${shareDir}/yajl.pc DESTINATION share/pkgconfig)
++  INSTALL(FILES ${shareDir}/yajl.pc DESTINATION lib${LIB_SUFFIX}/pkgconfig)
+ ENDIF()

@@ -1,0 +1,20 @@
+NAME="yajl"
+VERSION=2.0.4
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="Yet Another JSON Library"
+DESCRIPTION="Yet Another JSON Library. YAJL is a small event-driven (SAX-style)
+JSON parser written in ANSI C, and a small validating JSON generator. YAJL is
+released under the ISC license."
+HOMEPAGE="http://lloyd.github.com/yajl/"
+GIT_URI="git://github.com/lloyd/yajl.git"
+GIT_TAG=${VERSION}
+inherit git cmake
+
+PATCH_URI="2.0.4-cygwin.patch"
+
+PKG_NAMES="yajl libyajl2 libyajl-devel"
+yajl_SUMMARY="${SUMMARY} utilities"
+yajl_CONTENTS="usr/bin/*.exe usr/share/doc/"
+libyajl2_CONTENTS="usr/bin/cygyajl-2.dll"
+libyajl_devel_CONTENTS="usr/include/ usr/lib/"
